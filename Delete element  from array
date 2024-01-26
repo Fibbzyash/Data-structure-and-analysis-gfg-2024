@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int deleteElement(int arr[], int n, int x) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == x) {
+            // Element found, now delete it by shifting remaining elements
+            for (int j = i; j < n - 1; j++) {
+                arr[j] = arr[j + 1];
+            }
+            return n - 1; // Return the updated size of the array
+        }
+    }
+
+    // Element not found in the array
+    return n;
+}
+
+int main() {
+    const int Size = 10; // Assuming a maximum array size for simplicity
+    int arr[Size] = {1, 2, 3, 4, 5};
+    int size = 5; // Initial size of the array
+    int elementToDelete = 3;
+
+    size = deleteElement(arr, size, elementToDelete);
+
+    cout << "Array after deleting " << elementToDelete << ": ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
